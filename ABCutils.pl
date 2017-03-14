@@ -11,7 +11,7 @@ use File::Basename;
 use Scalar::Util qw(openhandle);
 use File::Path qw(rmtree);
 
-my $version = "1.4.1"; # as of 6/15/2015
+my $version = "1.5.0"; # as of 3/14/2017
 
 ### define variables to avoid 'will not stayed shared' warnings ###
 my $fixed;
@@ -1900,10 +1900,17 @@ sub ReynoldDist
 		$diffsum *= 0.5;
 		$alpha1 = 1 - $alpha1;
 		$alpha2 = 1 - $alpha2;
-		my $within = $diffsum - ($pooldipn*($dipn[0]*$alpha1 + $dipn[1]*$alpha2))/(4*$dipn[0]*$dipn[1]*($pooldipn-1));
+		my $between = $diffsum - ($pooldipn*($dipn[0]*$alpha1 + $dipn[1]*$alpha2))/(4*$dipn[0]*$dipn[1]*($pooldipn-1));
 		my $total = $diffsum + ((4*$dipn[0]*$dipn[1] - $pooldipn)*($dipn[0]*$alpha1 + $dipn[1]*$alpha2))/(4*$dipn[0]*$dipn[1]*($pooldipn-1));
-		my $fst = $within/$total;
-		push @$distvec, $fst < 0 ? 0 : $fst;
+		if ($total != 0) # total variance of 0 indicates that site is fixed for the same allele in both populations
+		{
+			my $fst = $between/$total;
+			push @$distvec, $fst < 0 ? 0 : $fst;
+		}
+		else
+		{
+			print STDERR "Site ", scalar @$distvec + 1, " is fixed for the same allele in both pops -> skipping\n";
+		}
 	}
 	return 0;
 }
