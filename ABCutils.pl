@@ -1828,7 +1828,7 @@ sub siteFst {
 		if ($popn < $maxn)
 		{
 			my $line = $_;
-			if ($line =~ /SampleData= {/)
+			if ($line =~ /SampleData= \{/)
 			{
 				chomp(my $line = <$arpfh>);
 				while ($line =~ /\S+\s+\d+\s+(.+)$/)
