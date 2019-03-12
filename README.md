@@ -129,18 +129,20 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### catsims
 
-Usage: ABCutils.pl catsims <folder_containing_sims> <simulation_file>
-
-Loops through a directory (and subdirectories) containing simulation files and appends the simulation output to the <simulation_file>
-
-Notes: 
+	%./ABCutils catsims
+	
+	Usage: ABCutils.pl catsims <folder_containing_sims> <simulation_file>
+	
+	Loops through a directory (and subdirectories) containing simulation files and appends the simulation output to the <simulation_file>
+	
+	Notes: 
 	-The 'folder\_containing_sims' can be a parent directory
 	-If simulation_file does not exist, it will be created
 
-./ABCutils.pl MaskCats
-
 #### MaskCats
-
+	
+	% ./ABCutils.pl MaskCats
+	
 	Usage: ABCutils.pl MaskCats [options]
 	
 	Force nonvariable 2D-SFS categories to be variable by changing the value of the nonvariable category in a randomly chosen simulation to 1e-100. This is in order to run ABCtoolsbox ABCestimator function on 2D-SFS simulations for which all values in a category among simluations is 0.
@@ -150,7 +152,10 @@ Notes:
 	-o    CHAR    Outfile name (including path)
 	-n    INT     Iterate through INT simulations to determine if a 2DSFS category is fixed for 0,
 	              otherwise, if (0) iterate through all simulations [0]
+
 #### rmvFixedZero
+
+`% ./ABCutils.pl rmvFixedZero
 
 Removes summary statistics fixed for 0 from simulation files and the *.obs file for use with ABCtoolbox ABCestimator. If a summary statistic is fixed for 0 in at least one model, this statistic
 is removed from all simulation files and the *.obs file.
@@ -161,7 +166,7 @@ Usage: ABCutils.pl rmvFixedZero -n INT -c INT <*.obs\_file> <simulation_file(s)>
 
 -c specifies that if a summary statistic has INT or fewer simulations with a nonzero value, the statistic is considered fixed and removed.
 
-Notes: New *.obs and simulation file(s) are dumped in the directory of the original files with 'estimator' appended to the name
+Notes: New *.obs and simulation file(s) are dumped in the directory of the original files with 'estimator' appended to the name`
 
 #### DistReject
 
