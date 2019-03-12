@@ -357,6 +357,8 @@ Generates summary statistic distributions under a given demographic model. The p
 
 ## Example commands to obtain demographic parameter posterior distributions by fitting 2D-SFS bins
 
+The files in the example_files directory are not really intended to be used to run the program to obtain sensible results (as the amount of simulated data is too little), but serve as an example for what the inputs should look like.
+
 ##### 1. Simulate 2D-SFS between pooled metapopulations for historic and modern sampling using parameter values drawn from prior distributions
 
 	./fastsimcoal_sampler.pl --outfile alpinusG_out --estfile ./ABCutils/example_files/alpyosG.est --tplfile ./ABCutils/example_files/alpyosG.tpl --recomb 0 --mut 2.2e-9 --trans 0.725 --seqlist ./ABCutils/example_files/alpinus_test_chr.fa --numsim 25000 --pop1 1 2 3 4 8 10 --pop2 11 12 13 14 15 16 17 19 --norm 0 --rmvfixed 0 --meta2DSFS 1 --p1missing 90 --p2missing 90 --rmvMutation CT GA
