@@ -100,7 +100,7 @@ fastsimcoal_sampler is simply a wrapper around the coalescent simulator fastsimc
 
 ## ABCutils.pl
 
-ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_sampler.pl and estimating demographic parameters. Some of the functions make the output of fastsimcoal_sampler.pl compatible with [ABCtoolbox](http://cmpg.unibe.ch/software/ABCtoolbox/) (Wegmann et al. 2010). For an overview of the subroutines run ABCutils.pl without arguments, and for help on each subroutine run \'ABCutils.pl <subroutine name>\' without arguments.
+ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_sampler.pl and estimating demographic parameters. Some of the functions make the output of fastsimcoal_sampler.pl compatible with [ABCtoolbox](http://cmpg.unibe.ch/software/ABCtoolbox/) (Wegmann et al. 2010). For an overview of the subroutines run ABCutils.pl without arguments, and for help on each subroutine run 'ABCutils.pl \<subroutine name\>' without arguments.
 
 	./ABCutils.pl
 	
