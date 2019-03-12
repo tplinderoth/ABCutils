@@ -96,35 +96,35 @@ fastsimcaol_sampler is simply a wrapper around the coalescent simulator, fastsim
 
 ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_sampler.pl and estimating demographic parameters. Some of the functions make the output of fastsimcoal_sampler.pl compatible with [ABCtoolbox](http://cmpg.unibe.ch/software/ABCtoolbox/) (Wegmann et al. 2010). For an overview of the subroutines run ABCutils.pl without arguments, and for help on each subroutine run 'ABCutils.pl <subroutine name>' without arguments.
 
-% ./ABCutils.pl
-
-Usage: ABCutils.pl [command] [arguments]
-
-Commands:
-
-catsims         Concatenate simulations from multiple .samp files outputted by fastsimcoal_sampler.pl
-
-MaskCats    	Make fixed zero categories among multiple 2D-SFS simulations variable
-   
-rmvFixedZero    Remove summary statistics fixed for zero in at least one demographic model
-                from observed (*.obs) and simulation files
-
-SetSpace    	Change all whitespace in a file to a single space
-
-DistReject    	Find simulations with the closest Euclidean distance to the observed data
-
-format2Dsim   	Tools for manipulating the output of fastsimcoal_sampler prior to using DistReject
-
-format2Dobs    	Formats the observed 2D-SFS for use with DistReject
-
-gofReject	Find simulations that fit most closely to the observed data based on goodnesss-of-fit
-
-best2Dsfs	Extracts the simulated 2D-SFS that most closely fits the observed 2D-SFS
-
-fold2D          Folds 2D-SFS
-
-StatDistr       Generates distribution of summary statistics for a given demographic model
-
+	% ./ABCutils.pl
+	
+	Usage: ABCutils.pl [command] [arguments]
+	
+	Commands:
+	
+	catsims         Concatenate simulations from multiple .samp files outputted by fastsimcoal_sampler.pl
+	
+	MaskCats    	Make fixed zero categories among multiple 2D-SFS simulations variable
+	   
+	rmvFixedZero    Remove summary statistics fixed for zero in at least one demographic model
+	                from observed (*.obs) and simulation files
+	
+	SetSpace    	Change all whitespace in a file to a single space
+	
+	DistReject    	Find simulations with the closest Euclidean distance to the observed data
+	
+	format2Dsim   	Tools for manipulating the output of fastsimcoal_sampler prior to using DistReject
+	
+	format2Dobs    	Formats the observed 2D-SFS for use with DistReject
+	
+	gofReject	Find simulations that fit most closely to the observed data based on goodnesss-of-fit
+	
+	best2Dsfs	Extracts the simulated 2D-SFS that most closely fits the observed 2D-SFS
+	
+	fold2D          Folds 2D-SFS
+	
+	StatDistr       Generates distribution of summary statistics for a given demographic model
+	
 ### ABCutils.pl subroutines
 
 #### catsims
@@ -141,15 +141,15 @@ Notes:
 
 #### MaskCats
 
-Usage: ABCutils.pl MaskCats [options]
-
-Force nonvariable 2D-SFS categories to be variable by changing the value of the nonvariable category in a randomly chosen simulation to 1e-100. This is in order to run ABCtoolsbox ABCestimator function on 2D-SFS simulations for which all values in a category among simluations is 0.
-
-Options:
--i    FILE    Simulation input file; should be *.samp format outputted by fastsimcoal_sampler.pl)
--o    CHAR    Outfile name (including path)
--n    INT     Iterate through INT simulations to determine if a 2DSFS category is fixed for 0,
-              otherwise, if (0) iterate through all simulations [0]
+	Usage: ABCutils.pl MaskCats [options]
+	
+	Force nonvariable 2D-SFS categories to be variable by changing the value of the nonvariable category in a randomly chosen simulation to 1e-100. This is in order to run ABCtoolsbox ABCestimator function on 2D-SFS simulations for which all values in a category among simluations is 0.
+	
+	Options:
+	-i    FILE    Simulation input file; should be *.samp format outputted by fastsimcoal_sampler.pl)
+	-o    CHAR    Outfile name (including path)
+	-n    INT     Iterate through INT simulations to determine if a 2DSFS category is fixed for 0,
+	              otherwise, if (0) iterate through all simulations [0]
 #### rmvFixedZero
 
 Removes summary statistics fixed for 0 from simulation files and the *.obs file for use with ABCtoolbox ABCestimator. If a summary statistic is fixed for 0 in at least one model, this statistic
