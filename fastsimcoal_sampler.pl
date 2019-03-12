@@ -24,8 +24,8 @@ fastsimcoal must be installed and in path
 
 Options:\n 
 --outfile	CHAR		Outfile name preffix (NO PATH)\n
---estfile	FILE		Fastsimcoal .est format file ("rules" section last)\n
---tplfile	FILE		Fastsimcoal .tpl format file\n
+--estfile	FILE		Fastsimcoal estimation (*.est) format file ("rules" section last)\n
+--tplfile	FILE		Fastsimcoal template (*.tpl) format file\n
 --recomb	FLOAT		Recombination rate between adjacent nucleotides within sequence blocks [0]\n
 --mut		FLOAT\/CHAR 	Mutation rate as float or parameter name from .est file [2.2e-09]\n 
 --trans		FLOAT		Transition rate (0.33 implies no mutation bias) [0.33]\n
@@ -46,15 +46,15 @@ Options:\n
 --p2missing 	FLOAT		Discard site if at least FLOAT percent of individuals in pop2 are missing data at the site.
 				Otherwise, missing data will be treated as major\/ancestral allele [50]\n
 Notes:\n 
-The .tpl input file:
+The template (*.tpl) input file:
 -Should not include fastsimcoal "genetic info" section; file should end after "historical event" section\n
-The .est input file:
+The estimation (*.est) input file:
 -should list sections in the order [parameters], [complex parameters], [conditional], [rules]
 -All parameter values drawn from priors or calculated must only contain uppercase letters and
  '_' in the name
 -Parameters must be defined in .est file before other parameters that depend on them are defined
 -Loguniform priors should not have zero as a boundary\n
--The fasta format file supplied to --seqlist is used to determine how many independent linkage blocks to simulate.
+The fasta format file supplied to --seqlist is used to determine how many independent linkage blocks to simulate.
  Each sequence in the fasta file is treated as a completely independent, non-recombining locus (linkage block), which has
  length equal to the sequence length. For example, each fasta sequence could be a chromosome. The recombination rate
  between adjacent sites within a linkage block is specified with the --recomb argument.\n
