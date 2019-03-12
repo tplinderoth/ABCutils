@@ -1,21 +1,21 @@
 ABCutils
 ========
 
-ABCutils is a collection of scripts for inferring population demography by fitting the 2D-site frequency spectrum (2D-SFS) using Approximate Bayesian Computation (ABC).
+ABCutils is a collection of scripts for inferring population demography by fitting the 2D site frequency spectrum (2D-SFS) using Approximate Bayesian Computation (ABC).
 
 ## Installation
 
 Download ABCutils by either cloning it from github
 
-	% git clone https://github.com/tplinderoth/ABCutils.git
+	git clone https://github.com/tplinderoth/ABCutils.git
 
 or download the ZIP file.
 
 ## fastsimcoal_sampler.pl
 
-fastsimcaol_sampler is simply a wrapper around the coalescent simulator, fastsimcoal (Excoffier & Foll 2011), and should also be compatible with [fastsimcoal2](http://cmpg.unibe.ch/software/fastsimcoal2/) (Excoffier et al. 2013). As such, the documentation for those programs is a good resource for setting up simulations. For a description of how to run the script, simply run fastsimcoal\_sampler.pl without arguments:
+fastsimcoal_sampler is simply a wrapper around the coalescent simulator fastsimcoal (Excoffier & Foll 2011), and should also be compatible with [fastsimcoal2](http://cmpg.unibe.ch/software/fastsimcoal2/) (Excoffier et al. 2013). As such, the documentation for those programs is a good resource for setting up simulations. For a description of how to run the script, simply run fastsimcoal\_sampler.pl without arguments:
 
-	% ./fastsimcoal_sampler.pl
+	./fastsimcoal_sampler.pl
 	
 	Version 1.1.4
 	
@@ -61,13 +61,13 @@ fastsimcaol_sampler is simply a wrapper around the coalescent simulator, fastsim
 	
 	--rmvMutation	CHAR		Remove SNP sites of certain mutation type(s) (only works when meta2DSFS = 1)
 	
-	--p1missing	FLOAT		Discard site if at least FLOAT percent of individuals in pop1 are missing data 
-					for the site. Otherwise, missing data will be treated as major/ancestral 
-					allele [50]
+	--p1missing	FLOAT		Discard site if at least FLOAT percent of individuals in pop1 are missing 
+					data for the site. Otherwise, missing data will be treated as 
+					major/ancestral allele [50]
 	
-	--p2missing 	FLOAT		Discard site if at least FLOAT percent of individuals in pop2 are missing data 
-					for the site. Otherwise, missing data will be treated as major/ancestral 
-					allele [50]
+	--p2missing 	FLOAT		Discard site if at least FLOAT percent of individuals in pop2 are missing 
+					data for the site. Otherwise, missing data will be treated as 
+					major/ancestral allele [50]
 	
 	
 	The template (*.tpl) input file:
@@ -100,9 +100,9 @@ fastsimcaol_sampler is simply a wrapper around the coalescent simulator, fastsim
 
 ## ABCutils.pl
 
-ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_sampler.pl and estimating demographic parameters. Some of the functions make the output of fastsimcoal_sampler.pl compatible with [ABCtoolbox](http://cmpg.unibe.ch/software/ABCtoolbox/) (Wegmann et al. 2010). For an overview of the subroutines run ABCutils.pl without arguments, and for help on each subroutine run 'ABCutils.pl <subroutine name>' without arguments.
+ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_sampler.pl and estimating demographic parameters. Some of the functions make the output of fastsimcoal_sampler.pl compatible with [ABCtoolbox](http://cmpg.unibe.ch/software/ABCtoolbox/) (Wegmann et al. 2010). For an overview of the subroutines run ABCutils.pl without arguments, and for help on each subroutine run \'ABCutils.pl <subroutine name>\' without arguments.
 
-	% ./ABCutils.pl
+	./ABCutils.pl
 	
 	Usage: ABCutils.pl [command] [arguments]
 	
@@ -135,7 +135,7 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### catsims
 
-	%./ABCutils catsims
+	./ABCutils catsims
 	
 	Usage: ABCutils.pl catsims <folder_containing_sims> <simulation_file>
 	
@@ -148,7 +148,7 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### MaskCats
 	
-	% ./ABCutils.pl MaskCats
+	./ABCutils.pl MaskCats
 	
 	Usage: ABCutils.pl MaskCats [options]
 	
@@ -164,7 +164,7 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### rmvFixedZero
 
-	% ./ABCutils.pl rmvFixedZero
+	./ABCutils.pl rmvFixedZero
 
 	Removes summary statistics fixed for 0 from simulation files and the *.obs file for use with 
 	ABCtoolbox ABCestimator. If a summary statistic is fixed for 0 in at least one model, this 
@@ -174,7 +174,6 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 	-n specifies how many simulations in each sim file to read through in order to determine which 
 	   summary statistics are fixed. The default is to read all simulations.
-
 	-c specifies that if a summary statistic has INT or fewer simulations with a nonzero value, 
 	   the statistic is considered fixed and removed.
 
@@ -184,7 +183,7 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### DistReject
 
-	% ./ABCutils.pl DistReject
+	./ABCutils.pl DistReject
 
 	Finds closest simulations to observed data in terms of Euclidean distance using a specified tolerance
 
@@ -205,7 +204,7 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### format2Dsim
 
-	% ./ABCutils.pl format2Dsim
+	./ABCutils.pl format2Dsim
 
 	Manipulates the set of simulated 2D-SFS outputted by fastsimcoal_sampler.pl
  
@@ -229,7 +228,7 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### format2Dobs
 
-	% ./ABCutils.pl format2Dobs
+	./ABCutils.pl format2Dobs
 
 	Formats the 2D-SFS for use as the observed input file for DistReject
 
@@ -254,7 +253,7 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### gofReject
 
-	% ./ABCutils gofReject
+	./ABCutils gofReject
 
 	Calculates goodness-of-fit statistic as (observed - expected)^2/expected between simulated and observed
 	summary statistics and retains simulations closest to the observed data
@@ -272,11 +271,11 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 	--numsim	INT	Number of simulations (from beginning of simfile) to calculate goodness-of-fit for
 
 	Notes:
-	The smaller number of simulations to find between --num\_keep and --percent_keep will be used
+	The smaller number of simulations to find between --num_keep and --percent_keep will be used
 
 #### best2Dsfs
 
-	% ./ABCutils.pl best2Dsfs
+	./ABCutils.pl best2Dsfs
 
 	Extracts the simulated 2D-SFS that most closely fits the observed 2D-SFS.
 
@@ -297,7 +296,7 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### fold2D
 
-	% ./ABCutils.pl fold2D
+	./ABCutils.pl fold2D
 
 	Folds a 2-dimensional site frequency spectrum
 
@@ -307,10 +306,9 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### StatDistr
 
-	% ./ABCutils.pl StatDistr
+Generates summary statistic distributions under a given demographic model. The program arlsumstat (Excoffier & Lischer 2010) is used to calculate some summary statistics so it's [README](http://cmpg.unibe.ch/software/arlequin35/man/arlsumstat_readme.txt) is a useful resource.
 
-	Generates summary statistic distributions under a given demographic model. The program arlsumstat (Excoffier & Lischer 2010)
-	is used to calculate some summary statistics so it's [README](http://cmpg.unibe.ch/software/arlequin35/man/arlsumstat_readme.txt) is a useful resource.
+	./ABCutils.pl StatDistr
 
 	Usage: ABCutils.pl StatDistr [arguments]
 
@@ -359,21 +357,21 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 ## Example commands to obtain demographic parameter posterior distributions by fitting 2D-SFS bins
 
-#### 1. Simulate 2D-SFS between pooled metapopulations for historic and modern sampling using parameter values drawn from prior distributions
+##### 1. Simulate 2D-SFS between pooled metapopulations for historic and modern sampling using parameter values drawn from prior distributions
 
-	% ./fastsimcoal\_sampler.pl --outfile alpinusG\_out --estfile ./ABCutils/example\_files/alpyosG.est --tplfile ./ABCutils/example\_files/alpyosG.tpl --recomb 0 --mut 2.2e-9 --trans 0.725 --seqlist ./ABCutils/example\_files/alpinus\_test\_chr.fa --numsim 25000 --pop1 1 2 3 4 8 10 --pop2 11 12 13 14 15 16 17 19 --norm 0 --rmvfixed 0 --meta2DSFS 1 --p1missing 90 --p2missing 90 --rmvMutation CT GA
+	./fastsimcoal\_sampler.pl --outfile alpinusG\_out --estfile ./ABCutils/example\_files/alpyosG.est --tplfile ./ABCutils/example\_files/alpyosG.tpl --recomb 0 --mut 2.2e-9 --trans 0.725 --seqlist ./ABCutils/example\_files/alpinus\_test\_chr.fa --numsim 25000 --pop1 1 2 3 4 8 10 --pop2 11 12 13 14 15 16 17 19 --norm 0 --rmvfixed 0 --meta2DSFS 1 --p1missing 90 --p2missing 90 --rmvMutation CT GA
 
-#### 2. Calculate simulated 2D-SFS bins
+##### 2. Calculate simulated 2D-SFS bins
 
-	% ./ABCutils.pl format2Dsim --pop1n 48 --pop2n 56 --sfsfile ./ABCutils/example\_files/alpinusG\_out.samp --outfile alpinusG\_fold\_bin2.txt --norm 0 --maskFixed 1 --bin 2
+	./ABCutils.pl format2Dsim --pop1n 48 --pop2n 56 --sfsfile ./ABCutils/example\_files/alpinusG\_out.samp --outfile alpinusG\_fold\_bin2.txt --norm 0 --maskFixed 1 --bin 2
 
-#### 3. Calculate observed 2D-SFS bins
+##### 3. Calculate observed 2D-SFS bins
 
-	% ./ABCutils.pl format2Dobs --insfs ./ABCutils/example\_files/T\_alpinus\_Yosemite_unfolded.2dsfs --outfile ./ABCutils/example\_files/ynp\_alpinus\_fold\_bin2\_mask.obs --fold 1 --maskFixed 1 --bin 2
+	./ABCutils.pl format2Dobs --insfs ./ABCutils/example\_files/T\_alpinus\_Yosemite_unfolded.2dsfs --outfile ./ABCutils/example\_files/ynp\_alpinus\_fold\_bin2\_mask.obs --fold 1 --maskFixed 1 --bin 2
 
-#### 4. Use rejection sampling to obtain parameter posterior distributions
+##### 4. Use rejection sampling to obtain parameter posterior distributions
 
-	% ./ABCutils.pl DistReject --numsim 25000 --numkeep 200 --stat_start 12 --sim ./ABCutils/example\_files/alpinusG\_fold\_bin2.txt --obs\_sfs ./ABCutils/example\_files/ynp\_alpinus\_fold\_bin2\_mask.obs --outfile ./ABCutils/example\_files/alpinusG\_fold\_bin2.dist
+	./ABCutils.pl DistReject --numsim 25000 --numkeep 200 --stat_start 12 --sim ./ABCutils/example\_files/alpinusG\_fold\_bin2.txt --obs\_sfs ./ABCutils/example\_files/ynp\_alpinus\_fold\_bin2\_mask.obs --outfile ./ABCutils/example\_files/alpinusG\_fold\_bin2.dist
 
 ## Notes on testing and depencies
 
