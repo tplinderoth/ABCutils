@@ -1,0 +1,16 @@
+//Priors for alpinus YNP model G
+[PARAMETERS]
+1 MODNE unif 1000 3800 // modern Ne (Number chromosomes!)
+0 GROWR logunif 1e-08 0.008 // exponential growth rate (positive indicates pop decline)
+0 MODMIG logunif 1e-07 0.005 // modern migration rate
+0 HISMIG logunif 1e-07 0.005 // historic migration rate
+1 GROWSTART logunif 1 500 // time of bottleneck
+1 MIGCHANGE logunif 1 500 // time that migration changes
+[COMPLEX PARAMETERS]
+
+[CONDITIONAL]
+0 SAMPR = GROWR if GROWSTART >= 90 else 0
+1 SAMPMIG = 1 if MIGCHANGE <= 90 else 0
+1 GROWMIG = 1 if MIGCHANGE <= GROWSTART else 0
+0 RATMIG = GROWR if MIGCHANGE <= GROWSTART else 0
+[RULES]
