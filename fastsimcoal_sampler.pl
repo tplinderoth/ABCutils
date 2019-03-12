@@ -54,6 +54,10 @@ The .est input file:
  '_' in the name
 -Parameters must be defined in .est file before other parameters that depend on them are defined
 -Loguniform priors should not have zero as a boundary\n
+-The fasta format file supplied to --seqlist is used to determine how many independent linkage blocks to simulate.
+ Each sequence in the fasta file is treated as a completely independent, non-recombining locus (linkage block), which has
+ length equal to the sequence length. For example, each fasta sequence could be a chromosome. The recombination rate
+ between adjacent sites within a linkage block is specified with the --recomb argument.\n
 The output file:
 -Names for unfolded SFS indicate element in the 2k+1 SFS: E<pop1_sfs_category><pop2_sfs_category>\n
 Calculating 2DSFS with metapopulations (meta2DSFS = 1):
