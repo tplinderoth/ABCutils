@@ -15,82 +15,82 @@ or download the ZIP file.
 
 fastsimcaol_sampler is simply a wrapper around the coalescent simulator, fastsimcoal (Excoffier & Foll 2011), and should also be compatible with [fastsimcoal2](http://cmpg.unibe.ch/software/fastsimcoal2/) (Excoffier et al. 2013). As such, the documentation for those programs is a good resource for setting up simulations. For a description of how to run the script, simply run fastsimcoal\_sampler.pl without arguments:
 
-% ./fastsimcoal_sampler.pl
-
-Version 1.1.4
-
-Usage: 
-fastsimcoal_sampler.pl [options]
-
-fastsimcoal must be installed and in path
-
-Options:
- 
---outfile	CHAR		Outfile name preffix (without path)
-
---estfile	FILE		Fastsimcoal estimation (*.est) format file ("rules" section last)
-
---tplfile	FILE		Fastsimcoal template (*.tpl) format file
-
---recomb	FLOAT		Recombination rate between adjacent nucleotides within sequence blocks [0]
-
---mut		FLOAT/CHAR 	Mutation rate as float or parameter name from estimation file [2.2e-09]
- 
---trans		FLOAT		Transition rate (0.33 implies no mutation bias) [0.33]
-
---seqlist	FILE		Fasta format file of sequence blocks (list of chromosomes or contigs)
-
---numseq	INT		Number of sequence blocks to simulate at a time (NA when meta2DSFS = 1) [500]
-
---numsim	INT		Number of simulations (each sim uses different parameter values) [1000]
-
---meta2DSFS	0|1		Calculate 2D-SFS for two metapopulations if (1) (each comprising >= 1 demes)
+	% ./fastsimcoal_sampler.pl
 	
---pop1		INT 		First population ID number in joint SFS (from top of template file, 0-based)
-				If meta2DSFS = 1, these are the >= 1 demes comprising metapopulation 1 (1-based)
- 
---pop2		INT		Second population ID number in joint SFS (from top of template file, 0-based)
-				If meta2DSFS = 1, these are the >= 1 demes comprising metapopulation 2 (1-based)
-
---norm		0|1		Normalize SFS if 1, else keep absolute counts if (0) [0]
-
---rmvfixed	0|1		Remove fixed categories in SFS if (1) (prior to standardization if --norm 1), 
-				else keep fixed categories if (0) [0]
-
---rmvMutation	CHAR		Remove SNP sites of certain mutation type(s) (only works when meta2DSFS = 1)
-
---p1missing	FLOAT		Discard site if at least FLOAT percent of individuals in pop1 are missing data for the site. 
-				Otherwise, missing data will be treated as major/ancestral allele [50]
-
---p2missing 	FLOAT		Discard site if at least FLOAT percent of individuals in pop2 are missing data for the site.
-				Otherwise, missing data will be treated as major/ancestral allele [50]
-
-
-The template (*.tpl) input file:
--Should not include fastsimcoal "genetic info" section
--The file should end after "historical event" section
-
-The estimation (*.est) input file:
--Should list sections in the order [parameters], [complex parameters], [conditional], [rules]
--All parameter values drawn from priors or calculated must only contain uppercase letters and
- '_' in the name
--Parameters must be defined in estimation file before other parameters that depend on them are defined
--Loguniform priors should not have zero as a boundary
-
--The fasta format file supplied to --seqlist is used to determine how many independent linkage blocks to simulate.
- Each sequence in the fasta file is treated as a completely independent, non-recombining locus (linkage block), which has
- length equal to the sequence length. For example, each fasta sequence could be a chromosome. The recombination rate
- between adjacent sites within a linkage block is specified with the --recomb argument.
-
-The output file:
--Names for unfolded SFS indicate element in the 2k+1 SFS: E<pop1_sfs_category><pop2_sfs_category>
-
-Calculating 2DSFS with metapopulations (meta2DSFS = 1):
--pop1 and pop2 arguments each take a list of >= 1 INT values for the demes comprisiong each
- (meta)population, respectively, in the arlequin project file (ex: --pop1 1 2 3 --pop2 4 5 6).
- The deme numbers correspond to the ascending order in which they are listed in the template file (1-indexed).
--The type of mutation to remove is denoted by <ancestral allele><derived allele>
- Example to remove C->T and G->A mutations: --rmvMutation CT GA
+	Version 1.1.4
+	
+	Usage: 
+	fastsimcoal_sampler.pl [options]
+	
+	fastsimcoal must be installed and in path
+	
+	Options:
+	 
+	--outfile	CHAR		Outfile name preffix (without path)
+	
+	--estfile	FILE		Fastsimcoal estimation (*.est) format file ("rules" section last)
+	
+	--tplfile	FILE		Fastsimcoal template (*.tpl) format file
+	
+	--recomb	FLOAT		Recombination rate between adjacent nucleotides within sequence blocks [0]
+	
+	--mut		FLOAT/CHAR 	Mutation rate as float or parameter name from estimation file [2.2e-09]
+ 	
+	--trans		FLOAT		Transition rate (0.33 implies no mutation bias) [0.33]
+	
+	--seqlist	FILE		Fasta format file of sequence blocks (list of chromosomes or contigs)
+	
+	--numseq	INT		Number of sequence blocks to simulate at a time (NA when meta2DSFS = 1) [500]
+	
+	--numsim	INT		Number of simulations (each sim uses different parameter values) [1000]
+	
+	--meta2DSFS	0|1		Calculate 2D-SFS for two metapopulations if (1) (each comprising >= 1 demes)
+	
+	--pop1		INT 		First population ID number in joint SFS (from top of template file, 0-based)
+					If meta2DSFS = 1, these are the >= 1 demes comprising metapopulation 1 (1-based)
+	 
+	--pop2		INT		Second population ID number in joint SFS (from top of template file, 0-based)
+					If meta2DSFS = 1, these are the >= 1 demes comprising metapopulation 2 (1-based)
+	
+	--norm		0|1		Normalize SFS if 1, else keep absolute counts if (0) [0]
+	
+	--rmvfixed	0|1		Remove fixed categories in SFS if (1) (prior to standardization if --norm 1), 
+					else keep fixed categories if (0) [0]
+	
+	--rmvMutation	CHAR		Remove SNP sites of certain mutation type(s) (only works when meta2DSFS = 1)
+	
+	--p1missing	FLOAT		Discard site if at least FLOAT percent of individuals in pop1 are missing data for the site. 
+					Otherwise, missing data will be treated as major/ancestral allele [50]
+	
+	--p2missing 	FLOAT		Discard site if at least FLOAT percent of individuals in pop2 are missing data for the site.
+					Otherwise, missing data will be treated as major/ancestral allele [50]
+	
+	
+	The template (*.tpl) input file:
+	-Should not include fastsimcoal "genetic info" section
+	-The file should end after "historical event" section
+	
+	The estimation (*.est) input file:
+	-Should list sections in the order [parameters], [complex parameters], [conditional], [rules]
+	-All parameter values drawn from priors or calculated must only contain uppercase letters and
+	 '_' in the name
+	-Parameters must be defined in estimation file before other parameters that depend on them are defined
+	-Loguniform priors should not have zero as a boundary
+	
+	-The fasta format file supplied to --seqlist is used to determine how many independent linkage blocks to simulate.
+	 Each sequence in the fasta file is treated as a completely independent, non-recombining locus (linkage block), which has
+	 length equal to the sequence length. For example, each fasta sequence could be a chromosome. The recombination rate
+	 between adjacent sites within a linkage block is specified with the --recomb argument.
+	
+	The output file:
+	-Names for unfolded SFS indicate element in the 2k+1 SFS: E<pop1_sfs_category><pop2_sfs_category>
+	
+	Calculating 2DSFS with metapopulations (meta2DSFS = 1):
+	-pop1 and pop2 arguments each take a list of >= 1 INT values for the demes comprisiong each
+	 (meta)population, respectively, in the arlequin project file (ex: --pop1 1 2 3 --pop2 4 5 6).
+	 The deme numbers correspond to the ascending order in which they are listed in the template file (1-indexed).
+	-The type of mutation to remove is denoted by <ancestral allele><derived allele>
+	Example to remove C->T and G->A mutations: --rmvMutation CT GA
 
 ## ABCutils.pl
 
