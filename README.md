@@ -47,10 +47,12 @@ fastsimcaol_sampler is simply a wrapper around the coalescent simulator, fastsim
 	--meta2DSFS	0|1		Calculate 2D-SFS for two metapopulations if (1) (each comprising >= 1 demes)
 	
 	--pop1		INT 		First population ID number in joint SFS (from top of template file, 0-based)
-					If meta2DSFS = 1, these are the >= 1 demes comprising metapopulation 1 (1-based)
+					If meta2DSFS = 1, these are the >= 1 demes comprising metapopulation 1 
+					(1-based)
 	 
 	--pop2		INT		Second population ID number in joint SFS (from top of template file, 0-based)
-					If meta2DSFS = 1, these are the >= 1 demes comprising metapopulation 2 (1-based)
+					If meta2DSFS = 1, these are the >= 1 demes comprising metapopulation 2 
+					(1-based)
 	
 	--norm		0|1		Normalize SFS if 1, else keep absolute counts if (0) [0]
 	
@@ -59,11 +61,13 @@ fastsimcaol_sampler is simply a wrapper around the coalescent simulator, fastsim
 	
 	--rmvMutation	CHAR		Remove SNP sites of certain mutation type(s) (only works when meta2DSFS = 1)
 	
-	--p1missing	FLOAT		Discard site if at least FLOAT percent of individuals in pop1 are missing data for the site. 
-					Otherwise, missing data will be treated as major/ancestral allele [50]
+	--p1missing	FLOAT		Discard site if at least FLOAT percent of individuals in pop1 are missing data 
+					for the site. Otherwise, missing data will be treated as major/ancestral 
+					allele [50]
 	
-	--p2missing 	FLOAT		Discard site if at least FLOAT percent of individuals in pop2 are missing data for the site.
-					Otherwise, missing data will be treated as major/ancestral allele [50]
+	--p2missing 	FLOAT		Discard site if at least FLOAT percent of individuals in pop2 are missing data 
+					for the site. Otherwise, missing data will be treated as major/ancestral 
+					allele [50]
 	
 	
 	The template (*.tpl) input file:
@@ -77,10 +81,11 @@ fastsimcaol_sampler is simply a wrapper around the coalescent simulator, fastsim
 	-Parameters must be defined in estimation file before other parameters that depend on them are defined
 	-Loguniform priors should not have zero as a boundary
 	
-	-The fasta format file supplied to --seqlist is used to determine how many independent linkage blocks to simulate.
-	 Each sequence in the fasta file is treated as a completely independent, non-recombining locus (linkage block), which has
-	 length equal to the sequence length. For example, each fasta sequence could be a chromosome. The recombination rate
-	 between adjacent sites within a linkage block is specified with the --recomb argument.
+	-The fasta format file supplied to --seqlist is used to determine how many independent linkage blocks 
+	 to simulate. Each sequence in the fasta file is treated as a completely independent, non-recombining 
+	 locus (linkage block), which has length equal to the sequence length. For example, each fasta 
+	 sequence could be a chromosome. The recombination rate between adjacent sites within a linkage block 
+	 is specified with the --recomb argument.
 	
 	The output file:
 	-Names for unfolded SFS indicate element in the 2k+1 SFS: E<pop1_sfs_category><pop2_sfs_category>
@@ -88,7 +93,8 @@ fastsimcaol_sampler is simply a wrapper around the coalescent simulator, fastsim
 	Calculating 2DSFS with metapopulations (meta2DSFS = 1):
 	-pop1 and pop2 arguments each take a list of >= 1 INT values for the demes comprisiong each
 	 (meta)population, respectively, in the arlequin project file (ex: --pop1 1 2 3 --pop2 4 5 6).
-	 The deme numbers correspond to the ascending order in which they are listed in the template file (1-indexed).
+	 The deme numbers correspond to the ascending order in which they are listed in the template 
+	 file (1-indexed).
 	-The type of mutation to remove is denoted by <ancestral allele><derived allele>
 	Example to remove C->T and G->A mutations: --rmvMutation CT GA
 
@@ -133,7 +139,8 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 	
 	Usage: ABCutils.pl catsims <folder_containing_sims> <simulation_file>
 	
-	Loops through a directory (and subdirectories) containing simulation files and appends the simulation output to the <simulation_file>
+	Loops through a directory (and subdirectories) containing simulation files and appends the simulation 
+	output to the <simulation_file>
 	
 	Notes: 
 	-The 'folder\_containing_sims' can be a parent directory
@@ -145,7 +152,9 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 	
 	Usage: ABCutils.pl MaskCats [options]
 	
-	Force nonvariable 2D-SFS categories to be variable by changing the value of the nonvariable category in a randomly chosen simulation to 1e-100. This is in order to run ABCtoolsbox ABCestimator function on 2D-SFS simulations for which all values in a category among simluations is 0.
+	Force nonvariable 2D-SFS categories to be variable by changing the value of the nonvariable category 
+	in a randomly chosen simulation to 1e-100. This is in order to run ABCtoolsbox ABCestimator function 
+	on 2D-SFS simulations for which all values in a category among simluations is 0.
 	
 	Options:
 	-i    FILE    Simulation input file; should be *.samp format outputted by fastsimcoal_sampler.pl)
@@ -157,16 +166,21 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 	% ./ABCutils.pl rmvFixedZero
 
-	Removes summary statistics fixed for 0 from simulation files and the *.obs file for use with ABCtoolbox ABCestimator. If a summary statistic is fixed for 0 in at least one model, this statistic
-	is removed from all simulation files and the *.obs file.
+	Removes summary statistics fixed for 0 from simulation files and the *.obs file for use with 
+	ABCtoolbox ABCestimator. If a summary statistic is fixed for 0 in at least one model, this 
+	statistic is removed from all simulation files and the *.obs file.
 
 	Usage: ABCutils.pl rmvFixedZero -n INT -c INT <*.obs\_file> <simulation_file(s)>
 
-	-n specifies how many simulations in each sim file to read through in order to determine which summary statistics are fixed. The default is to read all simulations.
+	-n specifies how many simulations in each sim file to read through in order to determine which 
+	   summary statistics are fixed. The default is to read all simulations.
 
-	-c specifies that if a summary statistic has INT or fewer simulations with a nonzero value, the statistic is considered fixed and removed.
+	-c specifies that if a summary statistic has INT or fewer simulations with a nonzero value, 
+	   the statistic is considered fixed and removed.
 
-	Notes: New *.obs and simulation file(s) are dumped in the directory of the original files with 'estimator' appended to the name
+	Notes: 
+	New *.obs and simulation file(s) are dumped in the directory of the original files with 
+	'estimator' appended to the name
 
 #### DistReject
 
@@ -201,7 +215,8 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 	--pop1n     INT    number of diploid individuals representing the horizontal (x-axis) of 2D-SFS
 	--pop2n	    INT    number of diploid individuals representing the vertical (y-axis) of 2D-SFS
 	--sfsfile   FILE   *.samp format file containing 2D-SFS simulations outputted by fastsimcoal_sampler.pl
-	--outfile   CHAR   outfile name (including path). If not specified the output will be dumped to the same directory as the *.samp input file
+	--outfile   CHAR   outfile name (including path). If not specified the output will be dumped to the same 
+			   directory as the *.samp input file
 	--norm      0|1    normalize the 2D-SFS if (1) [0]
 	--maskFixed 0|1    mask fixed categories in 2D-SFS if (1) [0]
 	--bin	    INT	   calculate diagonal bins of 2D-SFS categories; INT is 2 x the number of categories on
@@ -295,7 +310,7 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 	% ./ABCutils.pl StatDistr
 
 	Generates summary statistic distributions under a given demographic model. The program arlsumstat (Excoffier & Lischer 2010)
-	is used to calculate some summary statistics so it's README is a useful resource, http://cmpg.unibe.ch/software/arlequin35/man/arlsumstat_readme.txt.
+	is used to calculate some summary statistics so it's [README](http://cmpg.unibe.ch/software/arlequin35/man/arlsumstat_readme.txt) is a useful resource.
 
 	Usage: ABCutils.pl StatDistr [arguments]
 
@@ -324,7 +339,9 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 	% ./ABCsampler\_chromblock\_generator.pl
 
-	Use to format a *.par input file for DNA sequence simulation with fastsimcoal so that each contig represents a block on a single chromosome. 
+	Use to format a *.par input file for DNA sequence simulation with fastsimcoal so that each contig 
+	represents a block on a single chromosome. 
+	
 	This script only works for a single chromosome.
 
 	Usage: ABCsampler\_chromblock_generator.pl [options]
@@ -342,19 +359,19 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 ## Example commands to obtain demographic parameter posterior distributions by fitting 2D-SFS bins
 
-### Simulate 2D-SFS between pooled metapopulations for historic and modern sampling using parameter values drawn from prior distributions
+#### 1. Simulate 2D-SFS between pooled metapopulations for historic and modern sampling using parameter values drawn from prior distributions
 
 	% ./fastsimcoal\_sampler.pl --outfile alpinusG\_out --estfile ./ABCutils/example\_files/alpyosG.est --tplfile ./ABCutils/example\_files/alpyosG.tpl --recomb 0 --mut 2.2e-9 --trans 0.725 --seqlist ./ABCutils/example\_files/alpinus\_test\_chr.fa --numsim 25000 --pop1 1 2 3 4 8 10 --pop2 11 12 13 14 15 16 17 19 --norm 0 --rmvfixed 0 --meta2DSFS 1 --p1missing 90 --p2missing 90 --rmvMutation CT GA
 
-### Calculate simulated 2D-SFS bins
+#### 2. Calculate simulated 2D-SFS bins
 
 	% ./ABCutils.pl format2Dsim --pop1n 48 --pop2n 56 --sfsfile ./ABCutils/example\_files/alpinusG\_out.samp --outfile alpinusG\_fold\_bin2.txt --norm 0 --maskFixed 1 --bin 2
 
-### Calculate observed 2D-SFS bins
+#### 3. Calculate observed 2D-SFS bins
 
 	% ./ABCutils.pl format2Dobs --insfs ./ABCutils/example\_files/T\_alpinus\_Yosemite_unfolded.2dsfs --outfile ./ABCutils/example\_files/ynp\_alpinus\_fold\_bin2\_mask.obs --fold 1 --maskFixed 1 --bin 2
 
-### Use rejection sampling to obtain parameter posterior distributions
+#### 4. Use rejection sampling to obtain parameter posterior distributions
 
 	% ./ABCutils.pl DistReject --numsim 25000 --numkeep 200 --stat_start 12 --sim ./ABCutils/example\_files/alpinusG\_fold\_bin2.txt --obs\_sfs ./ABCutils/example\_files/ynp\_alpinus\_fold\_bin2\_mask.obs --outfile ./ABCutils/example\_files/alpinusG\_fold\_bin2.dist
 
@@ -367,4 +384,4 @@ fastsimcoal 1.1.2<br/>
 arlsumstat 3.5.2.1 (30.04.15)
 
 ## Contact
-Tyler Linderoth: tylerp.linderoth@gmail.com
+Tyler Linderoth\: tylerp.linderoth@gmail.com
