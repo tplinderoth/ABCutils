@@ -7,7 +7,7 @@ ABCutils is a collection of scripts for inferring population demography by fitti
 
 Download ABCutils by either cloning it from github
 
-% git clone https://github.com/tplinderoth/ABCutils.git
+	% git clone https://github.com/tplinderoth/ABCutils.git
 
 or download the ZIP file.
 
@@ -131,10 +131,11 @@ StatDistr       Generates distribution of summary statistics for a given demogra
 
 Usage: ABCutils.pl catsims <folder_containing_sims> <simulation_file>
 
-Loops through a directory (and subdirectories) containing simulation files and appends the simulation output to the "simulation_file"
+Loops through a directory (and subdirectories) containing simulation files and appends the simulation output to the <simulation_file>
 
-Notes: -The 'folder\_containing_sims' can be a parent directory
-      -If simulation_file does not exist, it will be created
+Notes: 
+	-The 'folder\_containing_sims' can be a parent directory
+	-If simulation_file does not exist, it will be created
 
 ./ABCutils.pl MaskCats
 
