@@ -359,23 +359,23 @@ Generates summary statistic distributions under a given demographic model. The p
 
 The files in the example_files directory are not really intended to be used to run the program to obtain sensible results (as the amount of simulated data is too little), but serve as an example for what the inputs should look like.
 
-##### 1. Simulate 2D-SFS between pooled metapopulations for historic and modern sampling using parameter values drawn from prior distributions
+#### 1. Simulate the 2D-SFS between pooled metapopulations for historic and modern sampling using parameter values drawn from prior distributions
 
 	./fastsimcoal_sampler.pl --outfile alpinusG_out --estfile ./ABCutils/example_files/alpyosG.est --tplfile ./ABCutils/example_files/alpyosG.tpl --recomb 0 --mut 2.2e-9 --trans 0.725 --seqlist ./ABCutils/example_files/alpinus_test_chr.fa --numsim 25000 --pop1 1 2 3 4 8 10 --pop2 11 12 13 14 15 16 17 19 --norm 0 --rmvfixed 0 --meta2DSFS 1 --p1missing 90 --p2missing 90 --rmvMutation CT GA
 
-##### 2. Calculate simulated 2D-SFS bins
+#### 2. Calculate simulated 2D-SFS bins
 
 	./ABCutils.pl format2Dsim --pop1n 48 --pop2n 56 --sfsfile ./ABCutils/example_files/alpinusG_out.samp --outfile alpinusG_fold_bin2.txt --norm 0 --maskFixed 1 --bin 2
 
-##### 3. Calculate observed 2D-SFS bins
+#### 3. Calculate observed 2D-SFS bins
 
 	./ABCutils.pl format2Dobs --insfs ./ABCutils/example_files/T_alpinus_Yosemite_unfolded.2dsfs --outfile ./ABCutils/example_files/ynp_alpinus_fold_bin2_mask.obs --fold 1 --maskFixed 1 --bin 2
 
-##### 4. Use rejection sampling to obtain parameter posterior distributions
+#### 4. Use rejection sampling to obtain parameter posterior distributions
 
 	./ABCutils.pl DistReject --numsim 25000 --numkeep 200 --stat_start 12 --sim ./ABCutils/example_files/alpinusG_fold_bin2.txt --obs_sfs ./ABCutils/example_files/ynp_alpinus_fold_bin2_mask.obs --outfile ./ABCutils/example_files/alpinusG_fold_bin2.dist
 
-## Notes on testing and depencies
+## Notes on testing and dependencies
 
 Versions of programs that fastsimcoal_sampler.pl and ABCutils.pl have been tested with:
 
