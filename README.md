@@ -155,18 +155,18 @@ ABCutils.pl is for manipulating the simulations generated with fastsimcoal\_samp
 
 #### rmvFixedZero
 
-`% ./ABCutils.pl rmvFixedZero
+	% ./ABCutils.pl rmvFixedZero
 
-Removes summary statistics fixed for 0 from simulation files and the *.obs file for use with ABCtoolbox ABCestimator. If a summary statistic is fixed for 0 in at least one model, this statistic
-is removed from all simulation files and the *.obs file.
+	Removes summary statistics fixed for 0 from simulation files and the *.obs file for use with ABCtoolbox ABCestimator. If a summary statistic is fixed for 0 in at least one model, this statistic
+	is removed from all simulation files and the *.obs file.
 
-Usage: ABCutils.pl rmvFixedZero -n INT -c INT <*.obs\_file> <simulation_file(s)>
+	Usage: ABCutils.pl rmvFixedZero -n INT -c INT <*.obs\_file> <simulation_file(s)>
 
--n specifies how many simulations in each sim file to read through in order to determine which summary statistics are fixed. The default is to read all simulations.
+	-n specifies how many simulations in each sim file to read through in order to determine which summary statistics are fixed. The default is to read all simulations.
 
--c specifies that if a summary statistic has INT or fewer simulations with a nonzero value, the statistic is considered fixed and removed.
+	-c specifies that if a summary statistic has INT or fewer simulations with a nonzero value, the statistic is considered fixed and removed.
 
-Notes: New *.obs and simulation file(s) are dumped in the directory of the original files with 'estimator' appended to the name`
+	Notes: New *.obs and simulation file(s) are dumped in the directory of the original files with 'estimator' appended to the name
 
 #### DistReject
 
