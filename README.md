@@ -355,7 +355,7 @@ Generates summary statistic distributions under a given demographic model. The p
 	-t FLOAT transition rate (0.33 implies no transition bias) [0.33]
 	-w FILE  list of transition rates for particular contigs (contig rate)
 
-## Example commands to obtain demographic parameter posterior distributions by fitting 2D-SFS bins
+## Example commands to estimate demographic parameter posterior distributions by fitting 2D-SFS bins
 
 The files in the example_files directory are not really intended to be used to run the program to obtain sensible results (as the amount of simulated data is too little), but serve as an example for what the inputs should look like.
 
@@ -371,7 +371,7 @@ The files in the example_files directory are not really intended to be used to r
 
 	./ABCutils.pl format2Dobs --insfs ./ABCutils/example_files/T_alpinus_Yosemite_unfolded.2dsfs --outfile ./ABCutils/example_files/ynp_alpinus_fold_bin2_mask.obs --fold 1 --maskFixed 1 --bin 2
 
-#### 4. Use rejection sampling to obtain parameter posterior distributions
+#### 4. Use rejection sampling to estimate parameter posterior distributions
 
 	./ABCutils.pl DistReject --numsim 25000 --numkeep 200 --stat_start 12 --sim ./ABCutils/example_files/alpinusG_fold_bin2.txt --obs_sfs ./ABCutils/example_files/ynp_alpinus_fold_bin2_mask.obs --outfile ./ABCutils/example_files/alpinusG_fold_bin2.dist
 
